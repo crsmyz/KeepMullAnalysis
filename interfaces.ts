@@ -1,3 +1,11 @@
+export interface CardRequest {
+    identifiers: CardName[];
+}
+
+export interface CardName {
+    name: string;
+}
+
 export interface CardObject {
     object: string;
     id: string;
