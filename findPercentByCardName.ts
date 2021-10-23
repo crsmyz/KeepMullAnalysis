@@ -1,6 +1,6 @@
-export function findPercentByCardName(value: any) {
-    cardNamePercentLists = [];
-    cardNameList = value;
+export function findPercentByCardName(value: any, deck: any) {
+    let cardNamePercentLists: any = [];
+    let cardNameList: any = value;
     value.map((cardName: any) => {
       let i: number = 1;
       let cardTypePercent: any = {};

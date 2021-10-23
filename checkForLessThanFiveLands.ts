@@ -2,7 +2,7 @@ export function checkForLessThanFiveLands(hand: any): boolean {
     let landCount: any = 0;
     let handArr = hand.split("|");
     handArr.pop();
-    handArr.forEach(card => {
+    handArr.forEach((card: any) => {
       if (card.includes("Land")) {
         landCount++;
       }
