@@ -1,0 +1,1 @@
+export const iterationLimit: number = 1000;

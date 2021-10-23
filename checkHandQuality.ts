@@ -1,4 +1,4 @@
-import { isHandBad } from "./isHandBad";
+import { isHandBad } from "./isHandBad.ts";
 
 export function checkHandQuality(hand: string, list: any): boolean {
     let typeCount: any = {land: 0, creature: 0, instant: 0, sorcery: 0, planeswalker: 0};
