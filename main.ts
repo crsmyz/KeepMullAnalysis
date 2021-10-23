@@ -1,7 +1,7 @@
 import { CardObject, PercentByCardType } from "./interfaces.ts";
 import { deckList } from "./deckList.ts";
 import { fetchDeckData } from "./fetchDeckData.ts";
-import { initCardNameSelector } from "./initCardNameSelector.ts";
+// import { initCardNameSelector } from "./initCardNameSelector.ts";
 import { calculateEachCardDrawPercentage } from "./calculateEachCardDrawPercentage.ts";
 import { assignAmountOfSiblingCardsInDeck } from "./assignAmountOfSiblingCardsInDeck.ts";
 import { createOpeningHandData } from "./createOpeningHandData.ts";
@@ -43,7 +43,7 @@ for (let i = 0; i < iterationLimit; i++) {
 }
 console.log("DONE!")
 // analyzeData
-analyzeData(data);
+analyzeData(downloadData);
 
 
 

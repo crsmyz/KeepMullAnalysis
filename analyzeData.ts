@@ -5,6 +5,7 @@ import { checkHandQuality } from "./checkHandQuality.ts";
 export function analyzeData(data: any): void {
     let keepCount: number = 0;
     let MulliganCount: number = 0;
+    console.log(data);
     data.forEach((hand: any) => {
       if (checkForIMSAndOUaT(hand.list, hand.type) &&
       checkForLessThanFiveLands(hand.type) &&
