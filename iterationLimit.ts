@@ -1,1 +1,2 @@
-export const iterationLimit: number = 1000;
+// sample size (# of opening hands to generate)
+export const iterationLimit: number = 100;
