@@ -24,6 +24,7 @@ let downloadData: any[] = [];
 
 // fetch deck data
 deckResp = await fetchDeckData(deckList);
+console.log(deckResp);
 // deck = assignAmountOfSiblingCardsInDeck(deckResp.data, deckList);
 // deck = calculateEachCardDrawPercentage(deck);
 // // create openening hand data
