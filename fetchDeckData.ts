@@ -1,4 +1,4 @@
-import { CardRequest, CardName } from "./interfaces.ts";
+import { formatRequestData } from "./formatRequestData.ts";
 
 // api variables for scryfall
 const API_URL: string = 'https://api.scryfall.com/';
@@ -9,30 +9,6 @@ const DECKLIST_URL: string = API_URL + COLLECTION_URL;
 // fetch deck data
 export async function fetchDeckData(deckRequest: string) {
     return await apiPostRequest(DECKLIST_URL, formatRequestData(deckRequest));
-}
-
-// change deck data in scryfall request format
-function formatRequestData(requestData: string) {
-    // grab amount of card copies in the decklist
-    const cardArrayNumber: string[] | null = requestData.match(/\d+/g);
-    // grab list of card names in the decklist
-    let cardArrayName: string[] = requestData.split(/[\d]/);
-    // check that all elements are valid
-    cardArrayName = cardArrayName.filter(val => val !== ''); // could potentially use this in a larger loop to save time
-    const cardRequest: CardRequest = { identifiers: [] };
-    // cardArrayNumber
-    // for each amount of copies
-    for (let i=0;i<cardArrayNumber.length;i++) {
-        // as long as we have a card name to match # of copies
-        if (cardArrayName[i] !== '') {
-            // create
-            for (let index=0;index<+cardArrayNumber[index]; index++) {
-                const cardObj: CardName = { name: cardArrayName[i].substr(1) };
-                cardRequest.identifiers.push(cardObj);
-            }
-        }
-    }
-    return cardRequest;
 }
 
 async function apiPostRequest(url: string, data: any) {
