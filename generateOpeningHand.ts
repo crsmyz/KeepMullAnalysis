@@ -12,8 +12,6 @@ export function generateOpeningHand(
   cardTypePercentLists: PercentByCardType[],
   cardNamePercentLists: PercentByCardType[]
   ): void {
-    
-    
     if (hand && hand.length > 0) {
       for (let i = 0; i < 7; i++) {
         const card: any = hand.shift();
@@ -34,14 +32,8 @@ export function generateOpeningHand(
         });
       }
     }
-
-
-
     // assignRandomCardToHand(deck, hand);
     let d =calculateEachCardDrawPercentage(deck);
-    cardTypePercentLists.length > 0 && cardTypeList.length > 0 ? findPercentByCardType(cardTypeList, d) : console.log('none');
-    cardNamePercentLists.length > 0 && cardNameList.length > 0 ? findPercentByCardName(cardNameList, d) : console.log('none');
-    // this.disabledReset = false;
-    // this.disabledOpeningHand = true;
-    // this.disableMulligan = false;
+    cardTypePercentLists.length > 0 && cardTypeList.length > 0 ? findPercentByCardType(cardTypeList, d) : '';
+    cardNamePercentLists.length > 0 && cardNameList.length > 0 ? findPercentByCardName(cardNameList, d) : '';
 }
