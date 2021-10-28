@@ -7,8 +7,8 @@ const COLLECTION_URL: string = 'cards/collection';
 const DECKLIST_URL: string = API_URL + COLLECTION_URL;
 
 // fetch deck data
-export async function fetchDeckData(deckRequest: string) {
-    return await apiPostRequest(DECKLIST_URL, formatRequestData(deckRequest));
+export async function fetchDeckData(userDeckList: string) {
+    return await apiPostRequest(DECKLIST_URL, formatRequestData(userDeckList)).then(resp => resp.data);
 }
 
 async function apiPostRequest(url: string, data: any) {

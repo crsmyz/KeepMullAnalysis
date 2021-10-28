@@ -1,7 +1,7 @@
 // interfaces
 import { CardObject, PercentByCardType } from "./interfaces.ts";
 // user defined input
-import { deckList } from "./deckList.ts";
+import { userDeckList } from "./userDeckList.ts";
 // fetch deck data
 import { fetchDeckData } from "./fetchDeckData.ts";
 import { calculateEachCardDrawPercentage } from "./calculateEachCardDrawPercentage.ts";
@@ -17,35 +17,32 @@ let cardTypeList: string[] = [];
 let cardNameList: string[] = [];
 let cardTypePercentLists: PercentByCardType[] = [];
 let cardNamePercentLists: PercentByCardType[] = [];
-let cardMap: any
-let deckResp: any;
-let data: any;
 let downloadData: any[] = [];
 
 // fetch deck data
-deckResp = await fetchDeckData(deckList);
-console.log(deckResp);
-// deck = assignAmountOfSiblingCardsInDeck(deckResp.data, deckList);
-// deck = calculateEachCardDrawPercentage(deck);
-// // create openening hand data
-
-
-// for (let i = 0; i < iterationLimit; i++) {
-//   generateOpeningHand(deck, hand, cardTypeList, cardNameList, cardTypePercentLists, cardNamePercentLists);
-//   let list: string = "";
-//   let cardType: string = ""
-//   hand.forEach((val: any) => {
-//     list = list + val.name + "  ";
-//     cardType = cardType + val.type_line + "|";
-//   })
-//   downloadData.push({list: list, type: cardType});
-//   resetSim(deck, hand, list);
-// }
-// console.log("DONE!")
-// // analyzeData
+// console.time();
+deck = await fetchDeckData(userDeckList);
+deck = assignAmountOfSiblingCardsInDeck(deck, userDeckList);
+// deck = calculateEachCardDrawPercentage();
+generateFullDataSet();
 // analyzeData(downloadData);
+console.log("DONE!");
+// console.timeEnd();
 
 
+function generateFullDataSet() {
+  for (let i = 0; i < iterationLimit; i++) {
+    let list: string = "";
+    let cardType: string = "";
+    generateOpeningHand(deck, hand, cardTypeList, cardNameList, cardTypePercentLists, cardNamePercentLists);
+    for (let index: number = 0;index < hand.length;index++) {
+      list = list + hand[index].name + "  ";
+      cardType = cardType + hand[index].type_line + "|";
+    }
+    downloadData.push({list: list, type: cardType});
+    resetSim(deck, hand, list);
+  }
+}
 
 function resetSim(deck: any, hand: any, list: any): void {
     // if (drawnCards && drawnCards.length > 0) {
@@ -61,7 +58,7 @@ function resetSim(deck: any, hand: any, list: any): void {
       deck,
       list
     );
-    calculateEachCardDrawPercentage(deck);
+    // calculateEachCardDrawPercentage(deck);
     cardTypePercentLists = [];
     cardNamePercentLists = [];
     cardTypeList = [];

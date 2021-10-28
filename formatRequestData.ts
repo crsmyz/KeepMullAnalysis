@@ -1,11 +1,11 @@
 import { CardRequest, CardName } from "./interfaces.ts";
 
 // change deck data in scryfall request format
-export function formatRequestData(requestData: string) {
+export function formatRequestData(userDeckList: string) {
     // grab amount of card copies in the decklist
-    const cardArrayNumber: string[] = requestData.match(/\d+/g) ?? [''];
+    const cardArrayNumber: string[] = userDeckList.match(/\d+/g) ?? [''];
     // grab list of card names in the decklist
-    let cardArrayName: string[] = requestData.split(/[\d]/);
+    let cardArrayName: string[] = userDeckList.split(/[\d]/);
     // check that all elements are valid
     cardArrayName = cardArrayName.filter(val => val !== ''); // could potentially use this in a larger loop to save time
     const cardRequest: CardRequest = { identifiers: [] };
