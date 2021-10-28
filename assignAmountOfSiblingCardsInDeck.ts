@@ -17,7 +17,7 @@ export function assignAmountOfSiblingCardsInDeck(deck: CardObject[], userDeckLis
             card.numberOfInDeck = cardArrayNumber[index];
           }
           // TODO: call and init each draw percentage here to save more loops time in the next call;
-          card.percentageToDraw = +(card.numberOfInDeck / deck.length).toFixed(6);
+          card.percentageToDraw = +(card?.numberOfInDeck / deck.length).toFixed(6);
         });
       }
     });

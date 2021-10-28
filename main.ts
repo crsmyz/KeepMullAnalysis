@@ -20,21 +20,21 @@ let cardNamePercentLists: PercentByCardType[] = [];
 let downloadData: any[] = [];
 
 // fetch deck data
-console.time();
+// console.time();
 deck = await fetchDeckData(userDeckList);
 deck = assignAmountOfSiblingCardsInDeck(deck, userDeckList);
 // deck = calculateEachCardDrawPercentage();
 generateFullDataSet();
 // analyzeData(downloadData);
 console.log("DONE!");
-console.timeEnd();
+// console.timeEnd();
 
 
 function generateFullDataSet() {
   for (let i = 0; i < iterationLimit; i++) {
     let list: string = "";
     let cardType: string = "";
-    // generateOpeningHand(deck, hand, cardTypeList, cardNameList, cardTypePercentLists, cardNamePercentLists);
+    generateOpeningHand(deck, hand, cardTypeList, cardNameList, cardTypePercentLists, cardNamePercentLists);
     for (let index: number = 0;index < hand.length;index++) {
       list = list + hand[index].name + "  ";
       cardType = cardType + hand[index].type_line + "|";
@@ -58,7 +58,7 @@ function resetSim(deck: any, hand: any, list: any): void {
       deck,
       list
     );
-    calculateEachCardDrawPercentage(deck);
+    // calculateEachCardDrawPercentage(deck);
     cardTypePercentLists = [];
     cardNamePercentLists = [];
     cardTypeList = [];
