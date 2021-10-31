@@ -13,21 +13,13 @@ import { generateOpeningHand } from "./generateOpeningHand.ts";
 
 let deck: CardObject[] = [];
 let hand: CardObject[] = [];
-let cardTypeList: string[] = [];
-let cardNameList: string[] = [];
-let cardTypePercentLists: PercentByCardType[] = [];
-let cardNamePercentLists: PercentByCardType[] = [];
 let downloadData: any[] = [];
 
 // fetch deck data
-console.time();
 deck = await fetchDeckData(userDeckList);
-// deck = assignAmountOfSiblingCardsInDeck(deck, userDeckList);
-// deck = calculateEachCardDrawPercentage();
-// generateFullDataSet();
-// analyzeData(downloadData);
+generateFullDataSet();
+analyzeData(downloadData);
 console.log("DONE!");
-console.timeEnd();
 
 
 function generateFullDataSet() {
@@ -45,22 +37,8 @@ function generateFullDataSet() {
 }
 
 function resetSim(deck: any, hand: any, list: any): void {
-    // if (drawnCards && drawnCards.length > 0) {
-    //   deck = deck.concat(drawnCards);
-    //   drawnCards = [];
-    // }
     if (hand && hand.length > 0) {
       deck = deck.concat(hand);
       hand = [];
     }
-    // let mull: number = 6;
-    // assignAmountOfSiblingCardsInDeck(
-    //   deck,
-    //   list
-    // );
-    // calculateEachCardDrawPercentage(deck);
-    // cardTypePercentLists = [];
-    // cardNamePercentLists = [];
-    // cardTypeList = [];
-    // cardNameList = [];
   }

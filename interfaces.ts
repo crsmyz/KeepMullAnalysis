@@ -3,7 +3,7 @@ export interface CardRequest {
 }
 
 export interface CardName {
-    name: string;
+    name: string | undefined;
 }
 
 export interface CardObject {
