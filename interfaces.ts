@@ -98,3 +98,8 @@ export interface PercentByCardType {
     numberOfInDeck: number;
     percentageToDraw: number;
 }
+
+export interface KeepMullData {
+    card: string;
+    cardType: string;
+}
