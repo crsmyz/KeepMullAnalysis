@@ -1,12 +1,9 @@
 // interfaces
-import { CardObject, PercentByCardType } from "./interfaces.ts";
+import { CardObject } from "./interfaces.ts";
 // user defined input
 import { userDeckList } from "./userDeckList.ts";
 // fetch deck data
-import { fetchDeckData } from "./fetchDeckData.ts";
-import { calculateEachCardDrawPercentage } from "./calculateEachCardDrawPercentage.ts";
-import { assignAmountOfSiblingCardsInDeck } from "./assignAmountOfSiblingCardsInDeck.ts";
-import { createOpeningHandData } from "./createOpeningHandData.ts";
+import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
 import { analyzeData } from "./analyzeData.ts";
 import { iterationLimit } from "./iterationLimit.ts";
 import { generateOpeningHand } from "./generateOpeningHand.ts";
@@ -17,17 +14,19 @@ let downloadData: any[] = [];
 
 // fetch deck data
 deck = await fetchDeckData(userDeckList);
+// create opening hand data based on the iteration limit
 generateFullDataSet();
+// return count of keeps, mulligans, and percentages for both
 analyzeData(downloadData);
 console.log("DONE!");
 
 
 function generateFullDataSet() {
   for (let i = 0; i < iterationLimit; i++) {
-    let list: string = "";
-    let cardType: string = "";
+    let list = "";
+    let cardType = "";
     generateOpeningHand(deck, hand);
-    for (let index: number = 0;index < hand.length;index++) {
+    for (let index = 0; index < hand.length; index++) {
       list = list + hand[index].name + "  ";
       cardType = cardType + hand[index].type_line + "|";
     }
