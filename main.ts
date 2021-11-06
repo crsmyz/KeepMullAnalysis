@@ -1,23 +1,26 @@
 // interfaces
-import { CardObject } from "./interfaces.ts";
+import { CardObject, KeepMullData } from "./interfaces.ts";
 // user defined input
 import { userDeckList } from "./userDeckList.ts";
-// fetch deck data
-import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
-import { analyzeData } from "./analyzeData.ts";
+// sample size for opening hand analysis
 import { iterationLimit } from "./iterationLimit.ts";
+// fetch deck data function
+import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
+// analyze data function
+import { analyzeData } from "./analyzeData.ts";
 import { generateOpeningHand } from "./generateOpeningHand.ts";
 
 let deck: CardObject[] = [];
 let hand: CardObject[] = [];
 let downloadData: any[] = [];
 
+console.time();
 // fetch deck data
 deck = await fetchDeckData(userDeckList);
 // create opening hand data based on the iteration limit
 generateFullDataSet();
 // return count of keeps, mulligans, and percentages for both
-analyzeData(downloadData);
+analyzeData(downloadData, iterationLimit);
 console.log("DONE!");
 
 
@@ -30,7 +33,7 @@ function generateFullDataSet() {
       list = list + hand[index].name + "  ";
       cardType = cardType + hand[index].type_line + "|";
     }
-    downloadData.push({list: list, type: cardType});
+    downloadData.push({card: list, cardType: cardType});
     resetSim(deck, hand, list);
   }
 }

@@ -1,8 +1,6 @@
 export function isHandBad(typePlaneswalker: any, typeInstant: any, typeSorcery: any, typereature: any, list: any): boolean {
-    // at least 4 lands
-
     let noCount: any = 0
-    list.split("  ").forEach(val => {
+    list.split("  ").forEach((val: any) => {
       if (val === "Natural Order") {
         noCount++;
       }
