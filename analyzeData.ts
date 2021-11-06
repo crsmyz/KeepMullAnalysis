@@ -6,9 +6,10 @@ export function analyzeData(data: any, iterationLimit: number): void {
     let keepCount: number = 0;
     let MulliganCount: number = 0;
     data.forEach((hand: any) => {
-      if (checkForIMSAndOUaT(hand.card, hand.cardType) &&
-      checkForLessThanFiveLands(hand.cardType) &&
-      checkHandQuality(hand.cardType, hand.card)) {
+      if (checkForIMSAndOUaT(hand.card, hand.cardType) 
+      // && checkForLessThanFiveLands(hand.cardType) 
+      // && checkHandQuality(hand.cardType, hand.card)
+      ) {
         keepCount++;
       } else {
         MulliganCount++;

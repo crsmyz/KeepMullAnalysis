@@ -8,7 +8,7 @@ import { iterationLimit } from "./iterationLimit.ts";
 import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
 // analyze data function
 import { analyzeData } from "./analyzeData.ts";
-import { generateOpeningHandDataSet } from "./generateOpeningHandDataSet.ts";
+import { generateOpeningHand } from "./generateOpeningHand.ts";
 
 let deck: CardObject[] = [];
 let hand: CardObject[] = [];
@@ -20,7 +20,7 @@ deck = await fetchDeckData(userDeckList);
 // create opening hand data based on the iteration limit
 generateFullDataSet();
 // return count of keeps, mulligans, and percentages for both
-analyzeData(downloadData);
+analyzeData(downloadData, iterationLimit);
 console.log("DONE!");
 
 
@@ -33,7 +33,7 @@ function generateFullDataSet() {
       list = list + hand[index].name + "  ";
       cardType = cardType + hand[index].type_line + "|";
     }
-    downloadData.push({list: list, type: cardType});
+    downloadData.push({card: list, cardType: cardType});
     resetSim(deck, hand, list);
   }
 }

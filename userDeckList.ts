@@ -10,14 +10,14 @@ export let userDeckList: string = `3 Natural Order
 4 Heritage Druid
 4 Glimpse of Nature
 2 Verdant Catacombs
-1 Llanowar Elves
 2 Dryad Arbor
-4 Nettle Sentinel
+3 Nettle Sentinel
 4 Wirewood Symbiote
-2 Birchlore Rangers
-4 Quirion Ranger
+1 Birchlore Rangers
+3 Quirion Ranger
 1 Grist, the Hunger Tide
 4 Gaea's Cradle
+4 Once Upon a Time
 4 Allosaurus Shepherd
 1 Savannah
 1 Archon of Valor's Reach`;
