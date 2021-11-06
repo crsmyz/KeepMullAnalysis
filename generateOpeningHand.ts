@@ -10,15 +10,12 @@ export function generateOpeningHand(
         deck.push(card);
       }
     }
-    for (let i = 0; i < 7; i++) {
-      const card: CardObject = deck.splice((Math.floor(Math.random() * deck.length)), 1)[0];
-      hand.push(card);
-    }
+    generateOpeningHandData(deck, hand);
 }
 
-// function generateOpeningHand(deck: CardObject[], hand: CardObject[]) {
-//   for (let i = 0; i < 7; i++) {
-//     const card: CardObject = deck.splice((Math.floor(Math.random() * deck.length)), 1)[0];
-//     hand.push(card);
-//   }
-// }
+function generateOpeningHandData(deck: CardObject[], hand: CardObject[]) {
+  for (let i = 0; i < 7; i++) {
+    const card: CardObject = deck.splice((Math.floor(Math.random() * deck.length)), 1)[0];
+    hand.push(card);
+  }
+}

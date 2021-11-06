@@ -5,18 +5,42 @@ import { userDeckList } from "./userDeckList.ts";
 // sample size for opening hand analysis
 import { iterationLimit } from "./iterationLimit.ts";
 // fetch deck data function
-import { fetchDeckData } from "./fetchDeckData.ts";
+import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
 // analyze data function
 import { analyzeData } from "./analyzeData.ts";
 import { generateOpeningHandDataSet } from "./generateOpeningHandDataSet.ts";
 
 let deck: CardObject[] = [];
 let hand: CardObject[] = [];
-let keepMullData: KeepMullData[] = [];
+let downloadData: any[] = [];
 
 console.time();
 // fetch deck data
 deck = await fetchDeckData(userDeckList);
-generateOpeningHandDataSet(deck, hand, iterationLimit, keepMullData);
-analyzeData(keepMullData, iterationLimit);
-console.timeEnd();
+// create opening hand data based on the iteration limit
+generateFullDataSet();
+// return count of keeps, mulligans, and percentages for both
+analyzeData(downloadData);
+console.log("DONE!");
+
+
+function generateFullDataSet() {
+  for (let i = 0; i < iterationLimit; i++) {
+    let list = "";
+    let cardType = "";
+    generateOpeningHand(deck, hand);
+    for (let index = 0; index < hand.length; index++) {
+      list = list + hand[index].name + "  ";
+      cardType = cardType + hand[index].type_line + "|";
+    }
+    downloadData.push({list: list, type: cardType});
+    resetSim(deck, hand, list);
+  }
+}
+
+function resetSim(deck: any, hand: any, list: any): void {
+    if (hand && hand.length > 0) {
+      deck = deck.concat(hand);
+      hand = [];
+    }
+  }
