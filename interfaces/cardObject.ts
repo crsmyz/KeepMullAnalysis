@@ -1,10 +1,5 @@
-export interface CardRequest {
-    identifiers: CardName[];
-}
-
-export interface CardName {
-    name: string | undefined;
-}
+import { ImageUri } from "./imageUri.ts";
+import { Legalities } from "./legalities.ts";
 
 export interface CardObject {
     object: string;
@@ -62,44 +57,4 @@ export interface CardObject {
     tix: string;
     percentageToDraw?: number;
     numberOfInDeck?: number;
-}
-// imageUri object: handles links to card images
-export interface ImageUri {
-    small: string;
-    normal: string;
-    large: string;
-    png: string;
-    art_crop: string;
-    border_crop: string;
-}
-// format Legalities object: shows which cards are legal in different formats
-export interface Legalities {
-    standard: string;
-    future: string;
-    frontier: string;
-    modern: string;
-    legacy: string;
-    pauper: string;
-    vintage: string;
-    penny: string;
-    commander: string;
-    c1vc1: string;
-    duel: string;
-    brawl: string;
-}
-
-export interface SwitcherList {
-    value: string;
-    viewValue: string;
-}
-
-export interface PercentByCardType {
-    name: string;
-    numberOfInDeck: number;
-    percentageToDraw: number;
-}
-
-export interface KeepMullData {
-    card: string;
-    cardType: string;
 }

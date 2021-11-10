@@ -1,4 +1,4 @@
-export async function apiPostRequest(url: string, requestData: any) {
+export async function apiPostRequest(url: string, requestData: string | number) {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST',

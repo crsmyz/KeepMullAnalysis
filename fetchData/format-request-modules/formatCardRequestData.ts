@@ -1,7 +1,8 @@
-import { CardRequest, CardName } from "./interfaces.ts";
+import { CardName } from "../../interfaces/cardName.ts";
+import { CardRequest } from "../../interfaces/cardRequest.ts";
 
 // change deck data in scryfall request format
-export function formatRequestData(userDeckList: string) {
+export function formatCardRequestData(userDeckList: string): CardRequest {
     // scryfall card request format
     const cardRequest: CardRequest = { identifiers: [] };
     // create array of from user input string

@@ -2,6 +2,11 @@
 import { CardObject, KeepMullData } from "./interfaces.ts";
 // user defined input
 import { userDeckList } from "./userDeckList.ts";
+
+import { API_URL } from "./fetchData/api-constants/api-constants.ts";
+import { CARD_COLLECTION_URL } from "./fetchData/api-constants/api-constants.ts";
+import { formatCardRequestData } from "./fetchData/format-request-data/formatCardRequestData.ts";
+import { apiPostRequest } from "./fetchData/api-request-modules/apiPostRequest.ts";
 // sample size for opening hand analysis
 import { iterationLimit } from "./iterationLimit.ts";
 // fetch deck data function
@@ -16,11 +21,12 @@ let downloadData: any[] = [];
 
 console.time();
 // fetch deck data
-deck = await fetchDeckData(userDeckList);
+deck = await fetchDeckData(userDeckList, apiPostRequest, API_URL, CARD_COLLECTION_URL, formatCardRequestData);
 // create opening hand data based on the iteration limit
 generateFullDataSet();
 // return count of keeps, mulligans, and percentages for both
-analyzeData(downloadData, iterationLimit);
+// analyzeData(downloadData, iterationLimit);
+console.timeEnd();
 console.log("DONE!");
 
 

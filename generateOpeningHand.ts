@@ -1,21 +1,21 @@
-import { CardObject } from "./interfaces.ts";
+import { CardObject } from "./interfaces/cardObject.ts";
 
 export function generateOpeningHand(
   deck: CardObject[],
   hand: CardObject[]
   ): void {
     if (hand && hand.length > 0) {
-      for (let i = 0; i < 7; i++) {
-        const card: any = hand.shift();
-        deck.push(card);
-      }
+      moveCardsInHandBackToDeck(deck, hand);
     }
-    generateOpeningHandData(deck, hand);
+    for (let i = 0; i < 7; i++) {
+      const card: CardObject = deck.splice((Math.floor(Math.random() * deck.length)), 1)[0];
+      hand.push(card);
+    }
 }
 
-function generateOpeningHandData(deck: CardObject[], hand: CardObject[]) {
+function moveCardsInHandBackToDeck(deck: CardObject[], hand: CardObject[]) {
   for (let i = 0; i < 7; i++) {
-    const card: CardObject = deck.splice((Math.floor(Math.random() * deck.length)), 1)[0];
-    hand.push(card);
+    const card: any = hand.shift();
+    deck.push(card);
   }
 }
