@@ -1,6 +1,6 @@
 export function isHandBad(typePlaneswalker: any, typeInstant: any, typeSorcery: any, typereature: any, list: any): boolean {
     let noCount: any = 0
-    list.split("  ").forEach((val: any) => {
+    list.forEach((val: any) => {
       if (val === "Natural Order") {
         noCount++;
       }

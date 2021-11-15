@@ -1,4 +1,4 @@
-export function checkForIMSAndOUaT(hand: any, type: any): boolean {
+export function checkForIMSAndOUaT(hand: string[], type: string[]): boolean {
     if (
       hand.includes("Forest") ||
       hand.includes("Snow-Covered Forest") ||
