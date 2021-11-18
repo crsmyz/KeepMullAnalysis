@@ -1,4 +1,4 @@
-export let userDeckList: string = `3 Natural Order
+export const userDeckList = `3 Natural Order
 2 Windswept Heath
 2 Snow-Covered Forest
 2 Bayou

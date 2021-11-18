@@ -1,7 +1,7 @@
-import { checkForIMSAndOUaT } from "./checkForIMSAndOUaT.ts";
-import { checkForLessThanFiveLands } from "./checkForLessThanFiveLands.ts";
-import { checkHandQuality } from "./checkHandQuality.ts";
-import { OpeningHandDataSet } from "./interfaces/openingHandData.ts";
+import { checkForIMSAndOUaT } from "./criterion/checkForIMSAndOUaT.ts";
+import { checkForLessThanFiveLands } from "./criterion/checkForLessThanFiveLands.ts";
+import { checkHandQuality } from "./criterion/checkHandQuality.ts";
+import { OpeningHandDataSet } from "../interfaces/openingHandData.ts";
 
 export function analyzeData(openingHandDataSet: OpeningHandDataSet[], iterationLimit: number): void {
     let keepCount: number = 0;

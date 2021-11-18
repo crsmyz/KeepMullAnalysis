@@ -4,8 +4,7 @@ import { OpeningHandDataSet } from "./interfaces/openingHandData.ts";
 
 // user defined input
 import { userDeckList } from "./userInput/userDeckList.ts";
-// sample size for opening hand analysis
-import { iterationLimit } from "./userInput/iterationLimit.ts";
+import { handIterationLimit } from "./userInput/handIterationLimit.ts";
 
 // API fetch function
 import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
@@ -17,20 +16,20 @@ import { CARD_COLLECTION_URL } from "./fetchData/api-constants/api-constants.ts"
 import { formatCardRequestData } from "./fetchData/format-request-modules/formatCardRequestData.ts";
 
 // creat opening hand data
-import { generateOpeningHand } from "./generateOpeningHands/generateOpeningHand.ts";
+import { useLoopToGenerateOpeningHandData } from "./generateOpeningHands/useLoopToGenerateOpeningHandData.ts";
 // analyse opening hand data
 import { analyzeData } from "./analysis/analyzeData.ts";
 
 let deck: CardObject[] = [];
-let hand: CardObject[] = [];
-let openingHandDataSet: OpeningHandDataSet[] = [];
+const hand: CardObject[] = [];
+const openingHandDataSet: OpeningHandDataSet[] = [];
 
 console.time();
 // fetch deck data
 deck = await fetchDeckData(userDeckList, apiPostRequest, API_URL, CARD_COLLECTION_URL, formatCardRequestData);
 // create opening hand data based on the iteration limit
-generateOpeningHand(deck, hand, iterationLimit, openingHandDataSet);
+useLoopToGenerateOpeningHandData(deck, hand, handIterationLimit, openingHandDataSet);
 // return count of keeps, mulligans, and percentages for both
-analyzeData(openingHandDataSet, iterationLimit);
+analyzeData(openingHandDataSet, handIterationLimit);
 console.timeEnd();
 console.log("DONE!");
