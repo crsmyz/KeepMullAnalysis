@@ -11,16 +11,11 @@ export function useLoopToGenerateOpeningHandData(
   iterationLimit: number,
   openingHandDataSet: OpeningHandDataSet[]
   ): void {
-    // let cardNameArray: string[] = [];
-    // let cardTypeArray: string[] = [];
     for (let i = 0; i < iterationLimit; i++) {
       let cardNameArray: string[] = [];
       let cardTypeArray: string[] = [];
       if (hand && hand.length > 0) {
         moveCardsInHandBackToDeck(deck, hand);
-        // cardNameArray = [];
-        // cardTypeArray = [];
-        // resetCardNameAndCardTypeArr(cardNameArray, cardTypeArray);
       }
       assignRandomCardsToHandArr(deck, hand, cardNameArray, cardTypeArray);
       pushHandDataToHandDataSetArr(openingHandDataSet, cardNameArray, cardTypeArray);
