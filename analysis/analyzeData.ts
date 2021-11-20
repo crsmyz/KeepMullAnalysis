@@ -5,7 +5,7 @@ export function analyzeData(openingHandDataSet: OpeningHandDataSet[], iterationL
     let keepCount: number = 0;
     let MulliganCount: number = 0;
     openingHandDataSet.forEach((handData: OpeningHandDataSet) => {
-      if(runAllAnalysisParameterFunctions(args, handData)) {
+      if(runAllAnalysisParameterFunctions(args, handData).find(bool => bool === false)) {
         keepCount++;
       } else {
         MulliganCount++;
@@ -14,11 +14,12 @@ export function analyzeData(openingHandDataSet: OpeningHandDataSet[], iterationL
     logKeepAndMullPercentages(keepCount, MulliganCount, iterationLimit);
   }
 
-  function runAllAnalysisParameterFunctions(args: any[], handData: OpeningHandDataSet): boolean {
+  function runAllAnalysisParameterFunctions(args: any[], handData: OpeningHandDataSet): boolean[] {
+    let boolArr: boolean[] = [];
     args.forEach((paramFunction: any) => {
-      if (paramFunction && paramFunction(handData)) {
-        return false;
+      if (paramFunction) {
+        boolArr.push(paramFunction(handData));
       }
     });
-    return true;
+    return boolArr;
   }

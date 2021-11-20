@@ -20,6 +20,7 @@ import { useLoopToGenerateOpeningHandData } from "./generateOpeningHands/useLoop
 // analyse opening hand data
 import { analyzeData } from "./analysis/analyzeData.ts";
 
+// functions for Hand Analysis
 import { checkForIMSAndOUaT } from "./analysis/criterion/checkForIMSAndOUaT.ts";
 import { checkForLessThanFiveLands } from "./analysis/criterion/checkForLessThanFiveLands.ts";
 import { checkHandQuality } from "./analysis/criterion/checkHandQuality.ts";
