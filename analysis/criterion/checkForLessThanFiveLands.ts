@@ -1,9 +1,11 @@
-export function checkForLessThanFiveLands(hand: string[]): boolean {
-    let landCount: any = 0;
+import { OpeningHandDataSet } from "../../interfaces/openingHandData.ts";
+
+export function checkForLessThanFiveLands(handData?: OpeningHandDataSet): boolean {
+    let landCount: number = 0;
     // let handArr = hand.split("|");
     // handArr.pop();
-    hand.forEach((card: string) => {
-      if (card.includes("Land")) {
+    handData?.cardTypeArray.forEach((cardType: string) => {
+      if (cardType.includes("Land")) {
         landCount++;
       }
     });
