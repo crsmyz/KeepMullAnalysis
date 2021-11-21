@@ -18,12 +18,14 @@ import { formatCardRequestData } from "./fetchData/format-request-modules/format
 // creat opening hand data
 import { useLoopToGenerateOpeningHandData } from "./generateOpeningHands/useLoopToGenerateOpeningHandData.ts";
 // analyse opening hand data
-import { analyzeData } from "./analysis/analyzeData.ts";
+import { analyzeData } from "./handAnalysis/analyzeData.ts";
 
 // functions for Hand Analysis
-import { checkForIMSAndOUaT } from "./analysis/criterion/checkForIMSAndOUaT.ts";
-import { checkForLessThanFiveLands } from "./analysis/criterion/checkForLessThanFiveLands.ts";
-import { checkHandQuality } from "./analysis/criterion/checkHandQuality.ts";
+// import { checkForIMSAndOUaT } from "./analysis/criterion/checkForIMSAndOUaT.ts";
+// import { checkForLessThanFiveLands } from "./analysis/criterion/checkForLessThanFiveLands.ts";
+// import { checkHandQuality } from "./analysis/criterion/checkHandQuality.ts";
+
+import { checkForRagavanAndDaze } from "./handAnalysis/handAnalysisFunctions/urDelver/checkForRagavanAndDaze.ts";
 
 let deck: CardObject[] = [];
 const hand: CardObject[] = [];
@@ -35,6 +37,6 @@ deck = await fetchDeckData(userDeckList, apiPostRequest, API_URL, CARD_COLLECTIO
 // create opening hand data based on the iteration limit
 useLoopToGenerateOpeningHandData(deck, hand, handIterationLimit, openingHandDataSet);
 // return count of keeps, mulligans, and percentages for both
-analyzeData(openingHandDataSet, handIterationLimit, checkForIMSAndOUaT, checkForLessThanFiveLands, checkHandQuality);
+analyzeData(openingHandDataSet, handIterationLimit, checkForRagavanAndDaze);
 console.timeEnd();
 console.log("DONE!");
