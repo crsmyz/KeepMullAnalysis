@@ -2,13 +2,13 @@ export const userDeckList = `4 Murktide Regent
 4 Force of Will
 4 Expressive Iteration
 4 Daze
-1 Gut Shot
-1 Unholy Heat
 4 Ragavan, Nimble Pilferer
+1 Pyroblast
 4 Lightning Bolt
 4 Dragon's Rage Channeler
+2 Gut Shot
 4 Ponder
-3 Delver of Secrets
+2 Delver of Secrets
 4 Brainstorm
 1 Mishra's Bauble
 2 Arid Mesa

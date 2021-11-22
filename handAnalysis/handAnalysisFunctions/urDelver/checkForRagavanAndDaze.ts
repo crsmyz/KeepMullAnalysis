@@ -10,8 +10,9 @@ export function checkForRagavanAndDaze(handData?: OpeningHandDataSet): boolean {
       handData?.cardNameArray.includes("Flooded Strand") ||
       handData?.cardNameArray.includes("Bloodstained Mire") ||
       handData?.cardNameArray.includes("Arid Mesa")) &&
-      (handData?.cardNameArray.includes("Ragavan, Nimble Pilferer") &&
-      handData?.cardNameArray.includes("Daze"))
+      (handData?.cardNameArray.includes("Ragavan, Nimble Pilferer")
+      // && handData?.cardNameArray.includes("Daze")
+      )
       ) {
         return true;
       } else {

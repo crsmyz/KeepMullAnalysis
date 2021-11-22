@@ -14,3 +14,7 @@ export function analyzeData(openingHandDataSet: OpeningHandDataSet[], iterationL
     });
     logKeepAndMullPercentages(keepCount, MulliganCount, iterationLimit);
   }
+
+  function countKeepsAndMulligans() {
+    
+  }
