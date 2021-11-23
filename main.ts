@@ -18,7 +18,7 @@ import { formatCardRequestData } from "./fetchData/format-request-modules/format
 // creat opening hand data
 import { useLoopToGenerateOpeningHandData } from "./generateOpeningHands/useLoopToGenerateOpeningHandData.ts";
 // analyse opening hand data
-import { analyzeData } from "./handAnalysis/analyzeData.ts";
+import { analyzeKeepAndMullCount } from "./handAnalysis/analyzeKeepAndMullCount.ts";
 
 // functions for Hand Analysis
 // import { checkForIMSAndOUaT } from "./analysis/criterion/checkForIMSAndOUaT.ts";
@@ -37,6 +37,6 @@ deck = await fetchDeckData(userDeckList, apiPostRequest, API_URL, CARD_COLLECTIO
 // create opening hand data based on the iteration limit
 useLoopToGenerateOpeningHandData(deck, hand, handIterationLimit, openingHandDataSet);
 // return count of keeps, mulligans, and percentages for both
-analyzeData(openingHandDataSet, handIterationLimit, checkForRagavanAndDaze);
+analyzeKeepAndMullCount(openingHandDataSet, handIterationLimit, checkForRagavanAndDaze);
 console.timeEnd();
 console.log("DONE!");
