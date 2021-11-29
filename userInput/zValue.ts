@@ -1,0 +1,1 @@
+export const zValue: number = 1.96;

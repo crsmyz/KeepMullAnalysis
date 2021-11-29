@@ -1,6 +1,8 @@
 import { OpeningHandDataSet } from "../interfaces/openingHandData.ts";
 import { logKeepAndMullPercentages } from "./logKeepAndMullPercentages.ts";
 import { runAllAnalysisParameterFunctions } from "./runAllAnalysisParameterFunctions.ts";
+import { normalConfidenceInterval } from "../statFunctions/normalConfidenceInterval.ts";
+import { zValue } from "../userInput/zValue.ts";
 
 export function analyzeKeepAndMullCount(openingHandDataSet: OpeningHandDataSet[], iterationLimit: number, ...args: any[]): void {
     let keepCount: number = 0;
@@ -13,4 +15,5 @@ export function analyzeKeepAndMullCount(openingHandDataSet: OpeningHandDataSet[]
       }
     });
     logKeepAndMullPercentages(keepCount, MulliganCount, iterationLimit);
+    normalConfidenceInterval(keepCount, zValue, iterationLimit);
   }
