@@ -1,46 +1,42 @@
 // interfaces
-import { CardObject, KeepMullData } from "./interfaces.ts";
+import { CardObject } from "./interfaces/cardObject.ts";
+import { OpeningHandDataSet } from "./interfaces/openingHandData.ts";
+
 // user defined input
-import { userDeckList } from "./userDeckList.ts";
-// sample size for opening hand analysis
-import { iterationLimit } from "./iterationLimit.ts";
-// fetch deck data function
+import { userDeckList } from "./userInput/userDeckList.ts";
+import { handIterationLimit } from "./userInput/handIterationLimit.ts";
+
+// API fetch function
 import { fetchDeckData } from "./fetchData/fetchDeckData.ts";
-// analyze data function
-import { analyzeData } from "./analyzeData.ts";
-import { generateOpeningHand } from "./generateOpeningHand.ts";
+
+// API parameters
+import { apiPostRequest } from "./fetchData/api-request-modules/apiPostRequest.ts";
+import { API_URL } from "./fetchData/api-constants/api-constants.ts";
+import { CARD_COLLECTION_URL } from "./fetchData/api-constants/api-constants.ts";
+import { formatCardRequestData } from "./fetchData/format-request-modules/formatCardRequestData.ts";
+
+// creat opening hand data
+import { useLoopToGenerateOpeningHandData } from "./generateOpeningHands/useLoopToGenerateOpeningHandData.ts";
+// analyse opening hand data
+import { analyzeKeepAndMullCount } from "./handAnalysis/analyzeKeepAndMullCount.ts";
+
+// functions for Hand Analysis
+import { checkForIMSAndOUaT } from "./handAnalysis/handAnalysisFunctions/elves/checkForIMSAndOUaT.ts";
+import { checkForLessThanFiveLands } from "./handAnalysis/handAnalysisFunctions/elves/checkForLessThanFiveLands.ts";
+import { checkHandQuality } from "./handAnalysis/handAnalysisFunctions/elves/checkHandQuality.ts";
+
+// import { checkForRagavanAndDaze } from "./handAnalysis/handAnalysisFunctions/urDelver/checkForRagavanAndDaze.ts";
 
 let deck: CardObject[] = [];
-let hand: CardObject[] = [];
-let downloadData: any[] = [];
+const hand: CardObject[] = [];
+const openingHandDataSet: OpeningHandDataSet[] = [];
 
 console.time();
 // fetch deck data
-deck = await fetchDeckData(userDeckList);
+deck = await fetchDeckData(userDeckList, apiPostRequest, API_URL, CARD_COLLECTION_URL, formatCardRequestData);
 // create opening hand data based on the iteration limit
-generateFullDataSet();
+useLoopToGenerateOpeningHandData(deck, hand, handIterationLimit, openingHandDataSet);
 // return count of keeps, mulligans, and percentages for both
-analyzeData(downloadData, iterationLimit);
+analyzeKeepAndMullCount(openingHandDataSet, handIterationLimit, checkForIMSAndOUaT, checkForLessThanFiveLands, checkHandQuality);
+console.timeEnd();
 console.log("DONE!");
-
-
-function generateFullDataSet() {
-  for (let i = 0; i < iterationLimit; i++) {
-    let list = "";
-    let cardType = "";
-    generateOpeningHand(deck, hand);
-    for (let index = 0; index < hand.length; index++) {
-      list = list + hand[index].name + "  ";
-      cardType = cardType + hand[index].type_line + "|";
-    }
-    downloadData.push({card: list, cardType: cardType});
-    resetSim(deck, hand, list);
-  }
-}
-
-function resetSim(deck: any, hand: any, list: any): void {
-    if (hand && hand.length > 0) {
-      deck = deck.concat(hand);
-      hand = [];
-    }
-  }

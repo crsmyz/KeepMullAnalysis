@@ -1,13 +1,7 @@
-import { formatRequestData } from "./formatRequestData.ts";
-import { apiPostRequest } from "./apiPostRequest.ts";
+import { FormatRequestFunc } from "./format-request-modules/format-request-interfaces/formatCardFuncInterface.ts";
+import { ApiRequestFunc } from "./api-request-modules/api-request-interfaces/apiRequestFuncInterface.ts";
 
-// api variables for scryfall
-const API_URL: string = 'https://api.scryfall.com/';
-// const CARD_URL: string = 'cards/named?exact=';
-const COLLECTION_URL: string = 'cards/collection';
-const DECKLIST_URL: string = API_URL + COLLECTION_URL;
-
-// fetch deck data
-export async function fetchDeckData(userDeckList: string) {
-    return await apiPostRequest(DECKLIST_URL, formatRequestData(userDeckList)).then(resp => resp.data);
+// async fetch function for scryfall data
+export async function fetchDeckData(bodyData: string, apiRequestFunc: ApiRequestFunc, apiUrl: string, suffixUrl: string, formatRequestFunc: FormatRequestFunc) {
+    return await apiRequestFunc(apiUrl + suffixUrl, formatRequestFunc(bodyData)).then((resp: any) => resp.data);
 }
