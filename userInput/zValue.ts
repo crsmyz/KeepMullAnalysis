@@ -1,1 +1,1 @@
-export const zValue: number = 1.96;
+export const zValue: number = 1.96; // value for 95% CI, 1.96

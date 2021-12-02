@@ -1,5 +1,5 @@
 import { OpeningHandDataSet } from "../interfaces/openingHandData.ts";
-import { logKeepAndMullPercentages } from "./logKeepAndMullPercentages.ts";
+import { logKeepAndMullPercentages } from "./dataLoggers/logKeepAndMullPercentages.ts";
 import { runAllAnalysisParameterFunctions } from "./runAllAnalysisParameterFunctions.ts";
 import { normalConfidenceInterval } from "../statFunctions/normalConfidenceInterval.ts";
 import { zValue } from "../userInput/zValue.ts";

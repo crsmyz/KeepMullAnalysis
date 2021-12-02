@@ -21,9 +21,9 @@ import { useLoopToGenerateOpeningHandData } from "./generateOpeningHands/useLoop
 import { analyzeKeepAndMullCount } from "./handAnalysis/analyzeKeepAndMullCount.ts";
 
 // functions for Hand Analysis
-import { checkForIMSAndOUaT } from "./handAnalysis/handAnalysisFunctions/elves/checkForIMSAndOUaT.ts";
-import { checkForLessThanFiveLands } from "./handAnalysis/handAnalysisFunctions/elves/checkForLessThanFiveLands.ts";
-import { checkHandQuality } from "./handAnalysis/handAnalysisFunctions/elves/checkHandQuality.ts";
+import { checkForIMSAndOUaT } from "./handAnalysis/handAnalysisFunctions/legacy/elves/checkForIMSAndOUaT.ts";
+import { checkForLessThanFiveLands } from "./handAnalysis/handAnalysisFunctions/legacy/elves/checkForLessThanFiveLands.ts";
+import { checkHandQuality } from "./handAnalysis/handAnalysisFunctions/legacy/elves/checkHandQuality.ts";
 
 // import { checkForRagavanAndDaze } from "./handAnalysis/handAnalysisFunctions/urDelver/checkForRagavanAndDaze.ts";
 

@@ -1,5 +1,5 @@
 import { isHandBad } from "./isHandBad.ts";
-import { OpeningHandDataSet } from "../../interfaces/openingHandData.ts";
+import { OpeningHandDataSet } from "../../../../interfaces/openingHandData.ts";
 
 export function checkHandQuality(handData?: OpeningHandDataSet): boolean {
     let typeCount: any = {land: 0, creature: 0, instant: 0, sorcery: 0, planeswalker: 0};
