@@ -1,4 +1,4 @@
-import { OpeningHandDataSet } from "../../interfaces/openingHandData.ts";
+import { OpeningHandDataSet } from "../../../../interfaces/openingHandData.ts";
 
 export function checkForLessThanFiveLands(handData?: OpeningHandDataSet): boolean {
     let landCount: number = 0;

@@ -1,6 +1,5 @@
 import { CardObject } from "../interfaces/cardObject.ts";
 import { OpeningHandDataSet } from "../interfaces/openingHandData.ts";
-import { returnCardsInHandToDeck } from "./openingHandFunctions/returnCardsInHandToDeck.ts";
 import { assignRandomCardsToHandArr } from "./openingHandFunctions/assignRandomCardsToHandArr.ts";
 import { moveCardsInHandBackToDeck } from "./openingHandFunctions/moveCardsInHandBackToDeck.ts";
 import { pushHandDataToHandDataSetArr } from "./openingHandFunctions/pushHandDataToHandDataSetArr.ts";
@@ -14,11 +13,8 @@ export function useLoopToGenerateOpeningHandData(
     for (let i = 0; i < iterationLimit; i++) {
       let cardNameArray: string[] = [];
       let cardTypeArray: string[] = [];
-      if (hand && hand.length > 0) {
-        moveCardsInHandBackToDeck(deck, hand);
-      }
       assignRandomCardsToHandArr(deck, hand, cardNameArray, cardTypeArray);
       pushHandDataToHandDataSetArr(openingHandDataSet, cardNameArray, cardTypeArray);
-      returnCardsInHandToDeck(deck, hand);
+      moveCardsInHandBackToDeck(deck, hand);
   }
 }
