@@ -20,7 +20,6 @@ export function isHandBad(typePlaneswalker: any, typeInstant: any, typeSorcery: 
     cardQualityArr.push(archonCount.length === 1);
     cardQualityArr.push(hoofCount.length === 1);
     cardQualityArr.push(arborCount.length > 1);
-    console.log(cardQualityArr);
     if (cardQualityArr.filter(val => val === true).length > 1) {
       return false;
     } else {
