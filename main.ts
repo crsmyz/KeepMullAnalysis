@@ -40,7 +40,6 @@ deck = await fetchDeckData(userDeckList, apiPostRequest, API_URL, CARD_COLLECTIO
 // create opening hand data based on the iteration limit
 useLoopToGenerateOpeningHandData(deck, hand, handIterationLimit, openingHandDataSet);
 // return count of keeps, mulligans, and percentages for both
-analyzeKeepAndMullCount(openingHandDataSet, handIterationLimit, checkForIMSAndOUaT, checkForLessThanFiveLands, checkHandQuality);
-// normalConfidenceInterval(418154, zValue, handIterationLimit);
+// analyzeKeepAndMullCount(openingHandDataSet, handIterationLimit, checkForIMSAndOUaT, checkForLessThanFiveLands, checkHandQuality);
 console.timeEnd();
 console.log("DONE!");

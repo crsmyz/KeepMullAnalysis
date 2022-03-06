@@ -16,4 +16,5 @@ export function analyzeKeepAndMullCount(openingHandDataSet: OpeningHandDataSet[]
     });
     logKeepAndMullPercentages(keepCount, MulliganCount, iterationLimit);
     normalConfidenceInterval(keepCount, zValue, iterationLimit);
+    normalConfidenceInterval(MulliganCount, zValue, iterationLimit);
   }

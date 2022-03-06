@@ -29,6 +29,13 @@ export function isHandBad(typePlaneswalker: any, typeInstant: any, typeSorcery: 
     cardCountIsGreaterThanThree.push(glimpseCount.length > 2);
     cardCountIsGreaterThanThree.push(ouatCount.length > 2);
     cardCountIsGreaterThanThree.push(noCount.length > 2);
+
+    // if hand contains Craterhoof and Archon
+    // if hand contains 1 or less creatures and 2 or more non GSZ sorceries
+    // OLD CRITERION
+    // cardNameArray?.includes("Craterhoof Behemoth") && cardNameArray?.includes("Archon of Valor's Reach") ||
+    // !cardNameArray?.includes("Green Sun's Zenith") && typeSorcery >= 2 && typereature <= 1
+
     if (cardQualityArr.filter(val => val === true).length > 2 || cardCountIsGreaterThanThree.filter(val => val === true).length > 0) {
       return false;
     } else {
